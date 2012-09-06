@@ -100,18 +100,15 @@
 		</script>
 
 		<div class="container">
+			{{ content }}
+			{% if page.github %}
 			<div class="row">
-				{{ content }}
-				{% if page.github %}
-				<br />
-				<div class="row">
-					<p>
-						&copy; Daniel Vizzini under MIT License. See the <a href="https://github.com/dvizzini/{{page.github}}">GitHub</a>.
-					</p>
-				</div>
-				{% endif %}
-				<br />
+				<p>
+					&copy; Daniel Vizzini under MIT License. See the <a href="https://github.com/dvizzini/{{page.github}}">GitHub</a>.
+				</p>
 			</div>
+			{% endif %}
+			<br />
 		</div>
 	</body>
 </html>

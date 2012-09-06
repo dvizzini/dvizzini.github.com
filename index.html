@@ -1,59 +1,62 @@
 ---
+link:
 layout: default
+screenshot: 'img/homepage.png'
+github: dvizzini.github.com
+description: I created <b><a href="">this site</a></b> using <a href="http://jekyllbootstrap.com/lessons/jekyll-introduction.html">Jekyll</a>, and <a href="https://github.com/dvizzini/bootstrap">my fork</a> of Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, and deployed it using <a href="https://help.github.com/articles/user-organization-and-project-pages">GitHub Pages</a>.
+weight: 4
 ---
-<div class="container">
-	<div class="row" id="content">
-		<div class="row">
-			<div class="span2 hidden-phone" style="text-align: right;">
-				<img src="ico/Vizzini-144.jpg">
-			</div>
-			<div class="span10">
-				<p>
-					I recently finished time at UC Berkeley as a grad student and then Research Enginer, and built this site to showcase some of my more web-friendly work.				
-				</p>
-				<p>
-					See my <a href="http://www.linkedin.com/pub/daniel-vizzini/a/618/a65">LinkedIn</a> for my education and work histories, including publications and recommendations.
-				</p>
-				<p>
-					Links to my more web-friendly work are below.
-				</p>
-				<p>
-					<em>Note that some older browsers, especially those in phones, are not capable of displaying d3.</em>
-				</p>
-			</div>
-		</div>
-		<table class="table">
-			<thead class="hidden-phone">
-				<tr>
-					<th>Link</th>
-					<th>GitHub</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-			{% for weight in (1..3) %}
-				{% for page in site.pages %}
-				
-					{% if page.weight == weight %} 
-					<tr>
-						<td width="300px" height="150px">
-							<a href="{{page.link}}"><img src="{{page.screenshot}}"/></a>
-						</td>
-						<td class="hidden-phone">
-							{% if page.github %}
-							<iframe src="http://ghbtns.com/github-btn.html?user=dvizzini&repo={{page.github}}&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="50px"></iframe>
-							{% else %}
-							Closed-source
-							{% endif %}
-	  					</td>
-						<td class="hidden-phone">
-							{{page.description}}
-	  					</td>
-					</tr>
-					{% endif %}
-				
-				{% endfor %}
-			{% endfor %}
-			</tbody>
+<div class="row">
+	<div class="span2 hidden-phone" style="text-align: right;">
+		<img src="ico/Vizzini-144.jpg">
+	</div>
+	<div class="span10">
+		<p>
+			I recently finished time at UC Berkeley as a grad student and then Research Enginer, and built this site to showcase some of my more web-friendly work.				
+		</p>
+		<p>
+			See my <a href="http://www.linkedin.com/pub/daniel-vizzini/a/618/a65">LinkedIn</a> for my education and work histories, including publications and recommendations.
+		</p>
+		<p>
+			Links to my more web-friendly work are below.
+		</p>
+		<p>
+			<em>Note that some older browsers, especially those in phones, are not capable of displaying d3.</em>
+		</p>
 	</div>
 </div>
+<br />
+<table class="table">
+	<thead class="hidden-phone">
+		<tr>
+			<th>Link</th>
+			<th>GitHub</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for weight in (1..4) %}
+		{% for page in site.pages %}
+		
+			{% if page.weight == weight %} 
+			<tr>
+				<td width="300px" height="150px">
+					<a href="{{page.link}}"><img src="{{page.screenshot}}"/></a>
+				</td>
+				<td class="hidden-phone">
+					{% if page.github %}
+					<iframe src="http://ghbtns.com/github-btn.html?user=dvizzini&repo={{page.github}}&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="50px"></iframe>
+					{% else %}
+					Closed-source
+					{% endif %}
+				</td>
+				<td class="hidden-phone">
+					{{page.description}}
+				</td>
+			</tr>
+			{% endif %}
+		
+		{% endfor %}
+	{% endfor %}
+	</tbody>
+</table>
