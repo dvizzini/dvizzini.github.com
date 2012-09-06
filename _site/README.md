@@ -1,9 +1,21 @@
 dvizzini.github.com
 ===================
 
-This is my personal homepage, which currently runs as [danielvizzini.com](http://danielvizzini.com)
+This is my personal homepage, which currently runs as [danielvizzini.com](http://danielvizzini.com). 
 
-View the visualization [here](http://danielvizzini.com/d3_calendar_clock.html).
+To download the latest version of my Bootstrap fork, run the appropriate shell script from the root directory:
+
+	./_download_bootstrap.sh
+	
+To locally test changes, first generate a new site from the root directory:
+
+	jekyll
+	
+then run this site from 127.0.0.1:4000 using Jekyll's built-in server;
+
+	jekyll --server
+	
+When you push to the master branch of this repo, GitHub will automatically regenerate the site.
 
 # The MIT License
 
