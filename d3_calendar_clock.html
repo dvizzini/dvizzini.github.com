@@ -1,0 +1,122 @@
+---
+link: d3_calendar_clock.html
+layout: default
+title: Demand Prediction
+cssFiles: ['d3_calendar_clock.css', 'colorbrewer.css']
+screenshot: 'img/d3_calendar_clock.png'
+github: d3_calendar_clock
+description: <b><a href="d3_calendar_clock.html">d3_calendar_clock</a></b> is an interactive, intuitive infographic that displays hourly demand prediction over several weeks. The (closed-source) prediction were calculated using the <a href="http://www.python.org/">Python</a> package <a href="http://numpy.scipy.org/">NumPy</a>, and the open-source graphic shown was coded using <a href="http://d3js.org/">d3.js</a>.
+weight: 2
+---
+<div class="row">
+	<p>
+		Below is prediction of demand of taxi rides in a section of San Francisco over three weeks. I based these predictions on 18,000 time stamps of pickups to reflects weekly variation and recent interweek growth.	
+	</p>
+	<p>
+		I designed the below graphic using <a href="http://d3js.org/">d3.js</a> to be readable for cabbies and dispatchers.
+	</p>
+	<p>
+		Red indicates low and green indicates high demand. Click a date to see predicted demand by hour.
+	</p>
+	<p>
+		<em>The area of a pie slice is proportional to predicted demand.</em>
+	</p>
+</div>
+<div class="row">
+	<div id="span12">
+		<div id="monthly-calendar" class="span12"></div>
+	</div>
+</div>
+<br />
+<div class="row">
+	<div class="span4">
+		<div class="clock">
+			<div style="text-align: center;">
+				Morning AM
+			</div>
+			<div id="morningAm"></div>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="clock">
+			<div style="text-align: center;">
+				PM
+			</div>
+			<div id="pm"></div>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="clock">
+			<div style="text-align: center;">
+				Late-Night AM
+			</div>
+			<div id="lateNightAm"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/d3.v2.js"></script>
+<script type="text/javascript" src="js/MonthlyCalendar.js"></script>
+<script type="text/javascript" src="js/Clock.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var global = {
+			"data" : null,
+			"startDate" : null,
+			"monthlyCalendar" : null,
+			"morningClock" : null,
+			"pmClock" : null,
+			"lateNightClock" : null
+		};
+
+		//get data and make svg's
+		$.ajax({
+			url : 'data/dayCountPredicted.json',
+			dataType : 'json',
+			success : function(data) {
+
+				//instantiate data, make calendar
+				global.startDate = new Date(data[0].utc * 1000);
+				global.data = data;
+				global.monthlyCalendar = new MonthlyCalendar('#monthly-calendar', data);
+
+				//convenience local variables
+				var sampleMorning = data[0].hourly[0], samplePm = data[0].hourly[1], sampleLateNight = data[0].hourly[2], radMax = d3.max(data, function(d) {
+					return d3.max(d.hourly, function(hourSeries) {
+						return d3.max(hourSeries, function(hour) {
+							return hour.count;
+						})
+					})
+				});
+
+				//instantiate clocks
+				global.morningClock = new Clock('#morningAm', sampleMorning[0].hour % 12, sampleMorning[sampleMorning.length - 1].hour % 12 + 1, 0, radMax);
+				global.pmClock = new Clock('#pm', samplePm[0].hour % 12, samplePm[samplePm.length - 1].hour % 12 + 1, 0, radMax);
+				global.lateNightClock = new Clock('#lateNightAm', sampleLateNight[0].hour % 12, sampleLateNight[sampleLateNight.length - 1].hour % 12 + 1, 0, radMax);
+
+				//set event handlers
+				$('.day').click(function() {
+					$('.day svg').attr('class', 'RdYlGn');
+					$(this).children().attr('class', 'highlighted');
+					var dateIndex = dateDiff(global.startDate, new Date(parseInt($(this).attr("id").match(/\d+/)[0])));
+					global.morningClock.loadData(global.data[dateIndex].hourly[0]);
+					global.pmClock.loadData(global.data[dateIndex].hourly[1]);
+					global.lateNightClock.loadData(global.data[dateIndex].hourly[2]);
+				});
+
+				//click first clock
+				var startingMidnightUtc = new Date(global.startDate.getTime() - (global.startDate.getTime() % (1000 * 3600 * 24)));
+				$('#date' + (startingMidnightUtc.getTime() + startingMidnightUtc.getTimezoneOffset() * 60 * 1000)).click();
+
+			}
+		});
+		
+		window.onresize = function() {
+			$("#monthly-calendar").html("");
+			global.monthlyCalendar = new MonthlyCalendar('#monthly-calendar', global.data);
+		}
+		
+	});
+</script>

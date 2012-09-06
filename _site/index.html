@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title> Daniel Vizzini</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="Daniel Vizzini">
+
+		<!-- Le styles -->
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap-meals.css" rel="stylesheet">
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/vizzini-144.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/vizzini-114.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/vizzini-72.png">
+		<link rel="apple-touch-icon-precomposed" href="ico/vizzini-57.png">
+
+		<!-- page-specific style -->
+		
+
+		<style type="text/css">
+
+			body {
+				color: #000;
+			}
+			
+			b > a {
+				color: #000;
+			}
+			
+			a:hover {
+				text-decoration: none;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<!-- Navbar
+		================================================== -->
+		<div class="navbar navbar-inverse navbar-static-top">
+			<div class="navbar-inner">
+				<ul class="nav">
+					<li>
+						<a href="http://www.linkedin.com/pub/daniel-vizzini/a/618/a65">LinkedIn</a>
+					</li>
+					<li class="">
+						<a href="https://twitter.com/vizzmaster">Twitter</a>
+					</li>
+					<li class="">
+						<a href="https://github.com/dvizzini/">GitHub</a>
+					</li>
+					<li class="">
+						<a href="mailto:dvizzini@gmail.com">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Masthead
+		================================================== -->
+		<header class="jumbotron">
+			<div class="row">
+				<h1 class="span6"><a href="index.html">Daniel Vizzini</a></h1>
+			</div>
+			<div id="tagline">
+				<p>
+					Software Developer and Math Practitoiner
+				</p>
+			</div>
+		</header>
+
+		<script type="text/javascript">
+			//not using jQuery because it's not available
+			function formatTagline() {
+				if(window.innerWidth < 768) {
+					document.getElementById("tagline").innerHTML = "<p>Software Developer</p><p>Math Practitioner</p>"
+				} else {
+					document.getElementById("tagline").innerHTML = "<p>Software Developer and Math Practitioner</p>"
+				}
+			}
+
+			formatTagline();
+			window.onresize = formatTagline;
+		</script>
+
+		<div class="container">
+			<div class="row">
+				<div class="container">
+	<div class="row" id="content">
+		<div class="row">
+			<div class="span2 hidden-phone" style="text-align: right;">
+				<img src="ico/Vizzini-144.jpg">
+			</div>
+			<div class="span10">
+				<p>
+					I recently finished time at UC Berkeley as a grad student and then Research Enginer, and built this site to showcase some of my more web-friendly work.				
+				</p>
+				<p>
+					See my <a href="http://www.linkedin.com/pub/daniel-vizzini/a/618/a65">LinkedIn</a> for my education and work histories, including publications and recommendations.
+				</p>
+				<p>
+					Links to my more web-friendly work are below.
+				</p>
+				<p>
+					<em>Note that some older browsers, especially those in phones, are not capable of displaying d3.</em>
+				</p>
+			</div>
+		</div>
+		<table class="table">
+			<thead class="hidden-phone">
+				<tr>
+					<th>Link</th>
+					<th>GitHub</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				
+				
+					
+				
+				
+				
+					 
+					<tr>
+						<td width="300px" height="150px">
+							<a href="xmobile.html"><img src="img/xmobile.png"/></a>
+						</td>
+						<td class="hidden-phone">
+							
+							Closed-source
+							
+	  					</td>
+						<td class="hidden-phone">
+							<b><a href="xmobile.html">xmobile</a></b> is a joint and proprietery venture of the College of Engineering and the Haas School of Business at UC Berkeley, for which I was the first software engineer. It is a mobile platform on which to preform behavioral science experiements. Built with <a href="https://www.djangoproject.com/">django</a>, <a href="http://django-tastypie.readthedocs.org/en/latest/index.html">Tastypie</a>, and <a href="http://developer.android.com/index.html">Android</a>, it features geofencing capabilities, timers, persistent memory, and scalability through abstraction.
+	  					</td>
+					</tr>
+					
+				
+				
+				
+					
+				
+				
+				
+					
+				
+				
+			
+				
+				
+					 
+					<tr>
+						<td width="300px" height="150px">
+							<a href="d3_calendar_clock.html"><img src="img/d3_calendar_clock.png"/></a>
+						</td>
+						<td class="hidden-phone">
+							
+							<iframe src="http://ghbtns.com/github-btn.html?user=dvizzini&repo=d3_calendar_clock&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="50px"></iframe>
+							
+	  					</td>
+						<td class="hidden-phone">
+							<b><a href="d3_calendar_clock.html">d3_calendar_clock</a></b> is an interactive, intuitive infographic that displays hourly demand prediction over several weeks. The (closed-source) prediction were calculated using the <a href="http://www.python.org/">Python</a> package <a href="http://numpy.scipy.org/">NumPy</a>, and the open-source graphic shown was coded using <a href="http://d3js.org/">d3.js</a>.
+	  					</td>
+					</tr>
+					
+				
+				
+				
+					
+				
+				
+				
+					
+				
+				
+				
+					
+				
+				
+			
+				
+				
+					
+				
+				
+				
+					
+				
+				
+				
+					
+				
+				
+				
+					 
+					<tr>
+						<td width="300px" height="150px">
+							<a href="d3_appended_line_chart.html"><img src="img/d3_appended_line_chart.png"/></a>
+						</td>
+						<td class="hidden-phone">
+							
+							<iframe src="http://ghbtns.com/github-btn.html?user=dvizzini&repo=d3_appended_line_chart&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="50px"></iframe>
+							
+	  					</td>
+						<td class="hidden-phone">
+							<b><a href="d3_appended_line_chart.html">d3_appended_line_chart</a></b> is an interactive infographic that combines <a href="http://d3js.org/">d3.js</a> with <a href="http://jqueryui.com/">jQuery UI</a> to explain what conclusions can be drawn from autocorrelograms at various lags. The (closed-source) prediction were calculated using the <a href="http://www.python.org/">Python</a> package <a href="http://numpy.scipy.org/">NumPy</a>.
+	  					</td>
+					</tr>
+					
+				
+				
+			
+			</tbody>
+	</div>
+</div>
+
+				
+				<br />
+			</div>
+		</div>
+	</body>
+</html>

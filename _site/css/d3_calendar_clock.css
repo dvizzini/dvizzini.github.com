@@ -1,0 +1,17 @@
+.highlighted {
+	fill: #AAA !important;
+}
+
+.day {
+	cursor: pointer;
+}
+
+.axis path, .axis line {
+  stroke-width: 1px;
+  stroke: #000;
+}
+
+.xTicks, .yTicks {
+	stroke-width: 0.6;
+	stroke: #000;
+}
