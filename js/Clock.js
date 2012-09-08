@@ -42,21 +42,20 @@ var Clock = function(divId, startHour, endHour, radMin, radMax) {		var fontSiz
 	    .data(d3.range(startHour,endHour + 1))
 	  .enter().append("g")
 	    .attr("class", "axis")
-	     .attr("transform", function(d) { 
+        .attr("transform", function(d) { 
 	     		return "rotate(" + angle(d) * 180 / Math.PI + ")"; 
-	     	})
+	   	})
 	  .call(d3.svg.axis()
 	    .scale(radius.copy().range([0,-(outerRadius)]))
 	    .orient("left")
 	    .tickSize(size * .01, 0)
 		)
-    .style('font-size', .02 * size)
 	  .append("text")
 	    .attr("y", -outerRadius - fontSize * size)
 	    .attr("dy", ".71em")
 	    .attr("text-anchor", "middle")
 	    .attr("text-align", "middle")
-	    .style("font-size", fontSize * size)
+	    .style("font-size", fontSize * size + "px")
 			.text(function(d) { return (d % 12 == 0 ? 12 : d % 12); });
 	
 	//remove 0 markings from axis 
@@ -65,8 +64,6 @@ var Clock = function(divId, startHour, endHour, radMin, radMax) {		var fontSiz
 	this.loadData = function(data) {
 		
 		svg.selectAll(".layer").remove();
-		
-		console.log("loading data");
 		
 	  //for last step
 	  // data.push({"hour": (data[data.length - 1].hour % 12) + 1, "count": data[data.length - 1].count});

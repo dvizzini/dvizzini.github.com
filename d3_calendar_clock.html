@@ -23,9 +23,7 @@ weight: 2
 	</p>
 </div>
 <div class="row">
-	<div id="span12">
-		<div id="monthly-calendar" class="span12"></div>
-	</div>
+	<div id="monthly-calendar" class="span12"></div>
 </div>
 <br />
 <div class="row">
@@ -57,11 +55,14 @@ weight: 2
 <br />
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/d3.v2.js"></script>
+<script type="text/javascript" src="js/browserBoolean.js"></script>
 <script type="text/javascript" src="js/MonthlyCalendar.js"></script>
 <script type="text/javascript" src="js/Clock.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
+  console.log("isFirefox:");
+  console.log(browserBoolean.isFirefox);
 		var global = {
 			"data" : null,
 			"startDate" : null,

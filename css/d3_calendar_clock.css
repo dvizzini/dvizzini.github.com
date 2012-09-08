@@ -11,6 +11,10 @@
   stroke: #000;
 }
 
+.axis text {
+  font-size: 10px;
+}
+
 .xTicks, .yTicks {
 	stroke-width: 0.6;
 	stroke: #000;

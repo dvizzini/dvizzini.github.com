@@ -13,8 +13,9 @@
       color = d3.scale.quantile(),
       counts = new Array(),
       startingDate = new Date(data[0].utc * 1000),
-      z = $(divId).width() / 7;      
-	
+      z = $(divId).width() / 7 - 5;      
+      console.log("z: " + z);
+      
   var startingMidnight = new Date(startingDate.getTime() - (startingDate.getTime() % (1000 * 3600 * 24)));
   
   var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -33,6 +34,7 @@
   			.data(daysOfWeek)
   		.enter().append("div")
 		    .style("display", "inline-block")
+		    .style("vertical-align", "top")
 		    .style("width", z + "px")
 		    .style("height", .15 *z + "px")
   		.append("svg:svg")
@@ -56,16 +58,18 @@
 	    .style("display", "inline-block")
 	    .style("vertical-align", "top")
 	    .style("width", z + "px")
-	    .style("width", z + "px")
-	    .style("height", ($(divId).width() < 768 ? 1.0 : 0.4) * z + "px")
+	    .style("height", z * ($(window).width() < 768 ? 1.0 : 0.4) + "px")
 	    .style("top", -7)
 		.append("svg:svg")
 	    .attr("class", "RdYlGn")
 		.append("svg:g");
-		
+	
+	console.log("creating svg:rect");
+    console.log("z: " + z);
+    console.log("z: " + z);
 	svg.append("svg:rect")
-	    .attr("width", "100%")
-	    .attr("height", "100%")
+	    .attr("width", z)
+	    .attr("height", z * ($(window).width() < 768 ? 1.0 : 0.4) + "px")
       .attr("class", function(d) { return "q" + color(data[dateDiff(startingDate, d)].count) + "-9"; });
 		
   svg.append("svg:text")
