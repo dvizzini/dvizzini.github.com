@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title> PinTweets |  Daniel Vizzini</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="PinTweets">
+		<meta name="author" content="Daniel Vizzini">
+
+		<!-- Le styles -->
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap-meals.css" rel="stylesheet">
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/vizzini-144.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/vizzini-114.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/vizzini-72.png">
+		<link rel="apple-touch-icon-precomposed" href="ico/vizzini-57.png">
+
+		<!-- page-specific style -->
+		
+
+		<style type="text/css">
+
+			body {
+				color: #000;
+			}
+			
+			b > a {
+				color: #000;
+			}
+			
+			a:hover {
+				text-decoration: none;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<!-- Navbar
+		================================================== -->
+		<div class="navbar navbar-inverse navbar-static-top">
+			<div class="navbar-inner">
+				<ul class="nav">
+					<li>
+						<a href="http://www.linkedin.com/pub/daniel-vizzini/a/618/a65">LinkedIn</a>
+					</li>
+					<li class="">
+						<a href="https://twitter.com/vizzmaster">Twitter</a>
+					</li>
+					<li class="">
+						<a href="https://github.com/dvizzini/">GitHub</a>
+					</li>
+					<li class="">
+						<a href="mailto:dvizzini@gmail.com">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Masthead
+		================================================== -->
+		<header class="jumbotron">
+			<div class="row">
+				<h1 class="span6"><a href="index.html">Daniel Vizzini</a></h1>
+			</div>
+			<div id="tagline">
+				<p>
+					Software Developer and Math Practitoiner
+				</p>
+			</div>
+		</header>
+
+		<script type="text/javascript">
+			//not using jQuery because it's not available
+			function formatTagline() {
+				if(window.innerWidth < 768) {
+					document.getElementById("tagline").innerHTML = "<p>Software Developer</p><p>Math Practitioner</p>"
+				} else {
+					document.getElementById("tagline").innerHTML = "<p>Software Developer and Math Practitioner</p>"
+				}
+			}
+
+			formatTagline();
+			window.onresize = formatTagline;
+		</script>
+
+		<div class="container">
+			<div class="row visible-phone">
+		<p>
+			<a href="http://www.pintweets.com"><img src="img/pinTweets.png" /></a>	
+		</p>
+</div>
+<div class="row">
+		<p>
+			<a href="http://www.pintweets.com"><img class="hidden-phone" width="600" height="300" style="float: right;" src="img/pinTweets.png" /></a>
+		</p>
+		<p>
+			<b><a href="http://www.pintweets.com">pintweets.com</a></b> is a hacker project I started last August. It uses Twitter's <a href="https://dev.twitter.com/docs/api/1/get/search">search</a> and <a href="https://dev.twitter.com/docs/api/1/get/users/lookup">users/lookup</a> API's, along with Google's <a href="https://developers.google.com/maps/">Maps</a> and <a href="https://developers.google.com/maps/documentation/geocoding/">Geocoding</a> API's to map the location of Tweet's based on their Tweeter's stated location.
+		</p>
+		<p>
+			While the location's mapped are certainly not court-admissable evidence, it is a fun way to get a sense of who is tweeting what around the world. 
+		</p>
+		<p>
+			Currently front-end only, I intend to improve PinTweets by implementing Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> for better cross-browser and mobile support, as well as a<a href="http://rubyonrails.org/">Ruby on Rails</a> to support OAuth and serve static pages.
+		</p>
+</div>
+
+			
+			<div class="row">
+				<p>
+					&copy; Daniel Vizzini under MIT License. See the <a href="https://github.com/dvizzini/PinTweets">GitHub</a>.
+				</p>
+			</div>
+			
+			<br />
+		</div>
+	</body>
+</html>
