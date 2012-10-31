@@ -111,15 +111,24 @@
 		</script>
 
 		<div class="container">
-			{{ content }}
-			{% if page.github %}
-			<div class="row">
-				<p>
-					&copy; Daniel Vizzini under MIT License. See the <a href="https://github.com/dvizzini/{{page.github}}">GitHub</a>.
-				</p>
-			</div>
-			{% endif %}
-			<br />
+      {% if page.ie_redirect %}
+        <!--[if IE]>
+          <script type="text/javascript">
+            window.location = "{{ie_redirect}}";
+          </script>
+        <![endif]-->
+      {% endif %}
+      
+      {{ content }}
+  	  
+      {% if page.github %}
+	  		<div class="row">
+		  		<p>
+			  		&copy; Daniel Vizzini under MIT License. See the <a href="https://github.com/dvizzini/{{page.github}}">GitHub</a>.
+			  	</p>
+			  </div>
+      {% endif %}
+      <br />
 		</div>
 	</body>
 </html>
