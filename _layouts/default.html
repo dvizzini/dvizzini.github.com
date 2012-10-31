@@ -114,7 +114,7 @@
       {% if page.ie_redirect %}
         <!--[if IE]>
           <script type="text/javascript">
-            window.location = "{{page.ie_redirect}}";
+            window.location.pathname = "{{page.ie_redirect}}";
           </script>
         <![endif]-->
       {% endif %}
