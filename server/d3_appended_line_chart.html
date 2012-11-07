@@ -12,10 +12,10 @@
     </script>
 
     <meta charset="utf-8">
-		<title> PinTweets |  Daniel Vizzini</title>
+		<title> Autocorrelogram |  Daniel Vizzini</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-		<meta name="description" content="PinTweets">
+		<meta name="description" content="Autocorrelogram">
 		<meta name="author" content="Daniel Vizzini">
 
 		<!-- Le styles -->
@@ -36,6 +36,14 @@
 		<link rel="apple-touch-icon-precomposed" href="ico/vizzini-57.png">
 
 		<!-- page-specific style -->
+		
+
+		<link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.22.custom.css"/>
+
+		
+
+		<link type="text/css" rel="stylesheet" href="css/d3_appended_line_chart.css"/>
+
 		
 
 		<style type="text/css">
@@ -108,35 +116,52 @@
 
 		<div class="container">
       
+        <!--[if IE]>
+          <script type="text/javascript">
+            window.location.pathname = "d3_redirect.html";
+          </script>
+        <![endif]-->
       
-      <div class="row visible-phone">
-		<p>
-			<a href="http://www.pintweets.com"><img src="img/pinTweets_full.png" /></a>	
-		</p>
+      
+      <div class="row">
+	<p>
+	Below is a set of autocorrelograms for hourly demand in a service industry, used to investigate inter- and intra-week relations in hourly demand and the suitability of autoregressive moving-average models in predicting this demand.		
+	</p>
+	<p>
+	Because autocorrelograms in general, and autocorrelograms of cross-weekly hourly demand in particular, are not familiar to most, I integrated <a href="http://d3js.org/">d3.js</a> with the <a href="http://jqueryui.com/">jQuery UI</a> package so that each line has an explicit explanation under its tab.
+	</p>
+	<p>
+	Dotted lines indicate the bounds of approximate 95% confidence intervals.
+	</p>
+	<p>
+	Click on either a line or tab to learn more about each autocorrelogram.
+	</p>
 </div>
+
 <div class="row">
-		<p>
-		<a href="http://www.pintweets.com"><img class="hidden-phone" width="600px" height="300px" style="float: right; margin-left: 10px;" src="img/pinTweets_full.png" /></a>
-		</p>
-		<p>
-    <b><a href="http://www.pintweets.com">pintweets.com</a></b> is a hacker project I started last August. It uses Twitter's <a href="https://dev.twitter.com/docs/api/1/get/search">search</a> and <a href="https://dev.twitter.com/docs/api/1/get/users/lookup">users/lookup</a> API's, along with Google's <a href="https://developers.google.com/maps/">Maps</a> and <a href="https://developers.google.com/maps/documentation/geocoding/">Geocoding</a> API's to map the location of Tweet's based on their Tweeter's stated location.
-		</p>
-		<p>
-	  While the location's mapped are certainly not court-admissible evidence, it is a fun way to get a sense of who is tweeting what around the world. 
-		</p>
-		<p>
-    Currently front-end only, I intend to improve PinTweets by refactoring the asynchronous API calls, implementing Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> for better cross-browser and mobile support, as well as <a href="http://rubyonrails.org/">Ruby on Rails</a> to support OAuth and serve static pages. The repo for this project is <a href="http://github.com/dvizzini/PinTweets">here</a>.
-		</p>
-    <p>
-    I started this refactoring process with <a href="https://github.com/DestroyerOfWorlds42/tweetGeocoder">Julian Cannon</a>, whom I taught at a summer course at Berkeley, along with my coinstructor <a href="https://github.com/btrump/tweetGeocoder">Blair Trump</a>. At his <a href="http://blairtrump.com">web development firm</a>, Blair implemented the algoirthm for a <a href="http://theworlddances.com/">dance website</a>.
-    </p>
+	<div class="span12">
+		<div id="autocorrelogram-hourly"></div>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.22.custom.min.js"></script><!--  jQuery UI -->
+<script type="text/javascript" src="js/d3.v2.js"></script>
+<script type="text/javascript" src="js/AppendedLineChart.js"></script>
+<script type="text/javascript">
+	AppendedLineChart('#autocorrelogram-hourly', 'data/autocorrelogramValuesHourly.json', '#EEE', 1, 10, -0.13, 1.0, $('#autocorrelogram-hourly').width() + 10, 450);
+</script>
+<br />
+<div class="row">
+	<p>
+	The above autocorrelations indicate that hour-of-week is essential in predicting demand, but that inter-week correlations of demand during a given hour are not strong enough to be modeled. Knowing that a given hour starts at Tuesday at 7 pm is essential in predicing its demand. Knowing demand for the previous three Tuesdays add little to one's ability to predict.		
+	</p>
 </div>
 
   	  
       
 	  		<div class="row">
 		  		<p>
-			  		&copy; Daniel Vizzini under MIT License. See the <a href="https://github.com/dvizzini/PinTweets_frontEndOnly">GitHub</a>.
+			  		&copy; Daniel Vizzini under MIT License. See the <a href="https://github.com/dvizzini/d3_appended_line_chart">GitHub</a>.
 			  	</p>
 			  </div>
       
